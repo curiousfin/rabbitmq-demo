@@ -1,0 +1,21 @@
+{
+    "name": "curiousfin/rabbitmq-demo",
+    "description": "Demo RabbitMQ",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Curiousfin\\RabbitmqDemo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "curiousfin",
+            "email": "curiousfin9@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.3",
+        "ext-amqp": "*"
+    }
+}
