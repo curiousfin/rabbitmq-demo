@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: docker/php
+    volumes:
+      - ./:/app
+      - ./docker/php/conf.d/:/usr/local/etc/php/conf.d/
+    ports:
+      - "9000:9000"
+    depends_on:
+      - rabbitmq
+    environment:
+      PHP_IDE_CONFIG: "serverName=app"
+
+  rabbitmq:
+    image: rabbitmq:3.8.3-management
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "admin"
+      RABBITMQ_DEFAULT_VHOST: "/"
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.37.0/24
